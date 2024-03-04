@@ -32,4 +32,13 @@ public class Book {
         // Set the title in this class
         author = newAuthor;
     }
+
+    public String getIsbn() { return isbn; };
+    public void setIsbn(String newIsbn) {
+        // Ensure that they're all number digits, and correct length, using one regex statement
+        if (!newIsbn.matches("\\d{13}"))
+            throw new IllegalArgumentException("The isbn needs to be 13 digits in length.");
+
+        isbn = newIsbn;
+    }
 }
