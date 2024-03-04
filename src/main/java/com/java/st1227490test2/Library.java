@@ -25,6 +25,16 @@ public class Library {
         books.add(newBook);
     }
 
+    public double inventoryValue() {
+        double totalPrice = 0;
+
+        // Sum up the total price of all books
+        for (Book book : books)
+            totalPrice += book.getPrice();
+
+        return totalPrice;
+    }
+
     public Library(String address, ArrayList<Book> books) {
         // Initialize the class
         books = new ArrayList<Book>();
