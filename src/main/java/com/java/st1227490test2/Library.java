@@ -1,5 +1,6 @@
 package com.java.st1227490test2;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Library {
@@ -33,6 +34,17 @@ public class Library {
             totalPrice += book.getPrice();
 
         return totalPrice;
+    }
+
+    public ArrayList<String> getCategories() {
+        ArrayList<String> categories = new ArrayList<String>();
+
+        // Loop through all books and get categories, and if it is already added, don't add it
+        for (Book book : books)
+            if (!categories.contains(book.getCategory()))
+                categories.add(book.getCategory());
+
+        return categories;
     }
 
     public Library(String address, ArrayList<Book> books) {
