@@ -47,6 +47,17 @@ public class Library {
         return categories;
     }
 
+    public ArrayList<Book> getBooksInCategory(String category) {
+        ArrayList<Book> foundBooks = new ArrayList<Book>();
+
+        // Iterate and find all books with said category
+        for (Book book : books)
+            if (book.getCategory().equals(category))
+                foundBooks.add(book);
+
+        return foundBooks;
+    }
+
     public Library(String address, ArrayList<Book> books) {
         // Initialize the class
         books = new ArrayList<Book>();

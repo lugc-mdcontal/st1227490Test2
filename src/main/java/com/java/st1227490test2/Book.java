@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Book {
-    private final List<String> validCategories = List.of(
+    private static final List<String> validCategories = List.of(
             "Mystery", "Thriller", "Horror",
             "Historical", "Romance", "Western",
             "Fantasy", "TextBook", "CookBook",
