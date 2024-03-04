@@ -1,6 +1,16 @@
 package com.java.st1227490test2;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Book {
+    private final List<String> validCategories = List.of(
+            "Mystery", "Thriller", "Horror",
+            "Historical", "Romance", "Western",
+            "Fantasy", "TextBook", "CookBook",
+            "Self Help", "Fiction", "Indigenous"
+    );
+
     private String title;
     private String author;
     private String isbn;
@@ -16,7 +26,7 @@ public class Book {
         // Clean up the title string
         newTitle = newTitle.trim();
 
-        // Set the title in this class
+        // Set the title
         title = newTitle;
     }
 
@@ -29,7 +39,7 @@ public class Book {
         // Clean up the title string
         newAuthor = newAuthor.trim();
 
-        // Set the title in this class
+        // Set the author
         author = newAuthor;
     }
 
@@ -39,6 +49,17 @@ public class Book {
         if (!newIsbn.matches("\\d{13}"))
             throw new IllegalArgumentException("The isbn needs to be 13 digits in length.");
 
+        // Set the new isbn
         isbn = newIsbn;
+    }
+
+    public String getCategory() { return category; }
+    public void setCategory(String newCategory) {
+        // Check if the category is correct
+        if (!validCategories.contains(newCategory))
+            throw new IllegalArgumentException("The category is not a valid category.");
+
+        // Set the new category
+        category = newCategory;
     }
 }
