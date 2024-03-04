@@ -62,4 +62,22 @@ public class Book {
         // Set the new category
         category = newCategory;
     }
+
+    public double getPrice() { return price; }
+    public void setPrice(double newPrice) {
+        // Check if the price is within 0-2000 range
+        if (price < 0 || price > 2000)
+            throw new IllegalArgumentException("The price must be within 0-2000 range.");
+
+        // Set the new price
+        price = newPrice;
+    }
+
+    public Book(String title, String author, String isbn, String category, double price) {
+        setTitle(title);
+        setAuthor(author);
+        setIsbn(isbn);
+        setCategory(category);
+        setPrice(price);
+    }
 }
