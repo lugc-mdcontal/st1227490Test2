@@ -58,8 +58,8 @@ public class Library {
         return foundBooks;
     }
 
-    public Library(String address, ArrayList<Book> books) {
-        // Initialize the class
+    public Library(String address) {
+        setAddress(address);
         books = new ArrayList<Book>();
     }
 }

@@ -74,7 +74,7 @@ public class Book {
         price = newPrice;
     }
 
-    public Book(String title, String author, String isbn, String category, double price) {
+    public Book(String title, String author, String isbn, double price, String category) {
         setTitle(title);
         setAuthor(author);
         setIsbn(isbn);
