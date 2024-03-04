@@ -19,7 +19,14 @@ public class Library {
         address = newAddress;
     }
 
+    public ArrayList<Book> getBooks() { return books; }
+    public void addBook(Book newBook) {
+        // Append the new book
+        books.add(newBook);
+    }
+
     public Library(String address, ArrayList<Book> books) {
+        // Initialize the class
         books = new ArrayList<Book>();
     }
 }
