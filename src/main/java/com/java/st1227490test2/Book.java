@@ -19,12 +19,13 @@ public class Book {
 
     public String getTitle() { return title; }
     public void setTitle(String newTitle) {
+        // Clean up the title string
+        newTitle = newTitle.trim();
+
+
         // Ensure the string is correct length
         if (newTitle.length() < 4)
             throw new IllegalArgumentException("The title needs to be at least four characters in length.");
-
-        // Clean up the title string
-        newTitle = newTitle.trim();
 
         // Set the title
         title = newTitle;
@@ -32,12 +33,12 @@ public class Book {
 
     public String getAuthor() { return author; }
     public void setAuthor(String newAuthor) {
+        // Clean up the title string
+        newAuthor = newAuthor.trim();
+
         // Ensure the string is correct length
         if (newAuthor.length() < 2)
             throw new IllegalArgumentException("The title needs to be at least four characters in length.");
-
-        // Clean up the title string
-        newAuthor = newAuthor.trim();
 
         // Set the author
         author = newAuthor;
