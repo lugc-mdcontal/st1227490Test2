@@ -2,18 +2,29 @@ package com.java.st1227490test2;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class HelloController {
     private Library library;
     private int currentBookIndex = 0;
 
-    public void renderBook() {
+    private ArrayList<Book> getBooks() {
+        // Get the books (and filter if needed)
+        boolean captureAll = searchCategory.getValue().equals("All");
+        ArrayList<Book> books = captureAll ? library.getBooks() : library.getBooksInCategory(searchCategory.getValue());
+
+        return books;
+    }
+
+    private void renderBook() {
         // Get the books
-        ArrayList<Book> books = library.getBooks();
+        ArrayList<Book> books = getBooks();
 
         // Make sure it's valid range
         if (currentBookIndex < 0 || currentBookIndex > books.size())
@@ -56,9 +67,12 @@ public class HelloController {
     private Label valBooks;
 
     @FXML
+    private ComboBox<String> searchCategory;
+
+    @FXML
     void onNextButton(MouseEvent event) {
         // This makes sure we never go over, and just reloops
-        currentBookIndex = (++currentBookIndex) % library.getBooks().size();
+        currentBookIndex = (++currentBookIndex) % getBooks().size();
 
         // Render the book
         renderBook();
@@ -79,6 +93,16 @@ public class HelloController {
         library.addBook(book4);
         library.addBook(book5);
         library.addBook(book6);
+
+        // Add all specifier
+        searchCategory.getItems().add("All");
+
+        // Add filtered search
+        for (String category : library.getCategories())
+            searchCategory.getItems().add(category);
+
+        // Set to all by default
+        searchCategory.setValue("All");
 
         address.setText(address.getText() + library.getAddress());
         numBooks.setText(numBooks.getText() + library.getBooks().size());
